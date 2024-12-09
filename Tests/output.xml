@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.5 on win32)" generated="2024-12-09T14:23:12.950847" rpa="false" schemaversion="5">
+<suite id="s1" name="Remote Login" source="C:\Project\Remote Server\Tests\remote_login.robot">
+<test id="s1-t1" name="Login To Salesforce" line="9">
+<kw name="Login To Salesforce" owner="salesforce_common_functions">
+<msg time="2024-12-09T14:23:31.257187" level="INFO">Login successful</msg>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<status status="PASS" start="2024-12-09T14:23:13.133284" elapsed="18.123903"/>
+</kw>
+<status status="PASS" start="2024-12-09T14:23:13.132288" elapsed="18.124899"/>
+</test>
+<status status="PASS" start="2024-12-09T14:23:12.952826" elapsed="18.304361"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Remote Login">Remote Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
