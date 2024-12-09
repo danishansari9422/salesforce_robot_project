@@ -1,0 +1,41 @@
+name: Run Robot Framework Tests
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow when changes are pushed to the 'main' branch
+  pull_request:
+    branches:
+      - main  # Trigger workflow when a pull request is made to the 'main' branch
+
+jobs:
+  run-robot-tests:
+    runs-on: [self-hosted]  # This specifies that the job will run on a self-hosted runner
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      # Step 3: Install dependencies (assuming you have a requirements.txt)
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  # Install Robot Framework and any other dependencies
+
+      # Step 4: Run the Robot Framework test
+      - name: Run Robot Framework tests
+        run: |
+          robot remote_login.robot  # Specify your test file here
+
+      # Step 5: Upload Robot Framework logs as artifacts (to view them later)
+      - name: Upload logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: robot-logs
+          path: output.xml  
