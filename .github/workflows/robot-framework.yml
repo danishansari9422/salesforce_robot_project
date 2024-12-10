@@ -1,0 +1,41 @@
+name: Run Robot Framework Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-robot-tests:
+    runs-on: [self-hosted]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Decode Backend Code
+        run: |
+          echo "${{ secrets.BACKEND_CODE }}" | base64 --decode > salesforce_common_functions.py
+
+      - name: Install dependencies
+        run: |
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+
+      - name: Run Robot Framework tests
+        run: |
+          robot remote_login.robot
+
+      - name: Upload Robot Framework logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: robot-logs
+          path: |
+            log.html
+            report.html
+            output.xml
