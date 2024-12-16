@@ -13,7 +13,7 @@ pipeline {
         stage('Run Robot Framework Tests') {
             steps {
                 // Execute Robot Framework test
-                bat 'Tests/remote_login.robot'
+                bat 'robot Tests/remote_login.robot'
             }
         }
 
