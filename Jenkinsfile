@@ -1,33 +1,41 @@
 pipeline {
     agent any
+
+    environment {
+        // Set up any environment variables you need
+    }
+
     stages {
+        // Checkout stage: Fetch the code from Git repository
         stage('Checkout Code') {
             steps {
-                git branch: 'main' , url:'https://github.com/danishansari9422/salesforce_robot_project.git' // Replace with your GitHub repo URL
+                checkout scm
             }
         }
+
+        // Set up the Python environment
         stage('Set Up Python Environment') {
             steps {
-                script {
-                    // Install Python and Robot Framework dependencies
-                    sh 'python -m venv venv'
-                    sh './venv/bin/pip install -r requirements.txt' // Ensure Robot Framework and any other dependencies are installed
-                }
+                // This is where you set up Python, check the version, and install dependencies
+                bat 'python --version'  // Check Python version on Windows (use 'sh' for Linux/macOS)
+                bat 'pip install --upgrade pip' // Optional: Update pip to the latest version
+                bat 'pip install -r requirements.txt'  // Install dependencies from requirements.txt
             }
         }
+
+        // Run Robot Framework Tests
         stage('Run Robot Framework Tests') {
             steps {
-                script {
-                    // Execute Robot Framework tests
-                    sh './venv/bin/salesforce_robot_project/Tests/remote_login.robot' // Adjust with the correct path to your test files
-                }
+                // Command to execute Robot Framework tests
+                bat 'robot tests/remote_login.robot'
             }
         }
-    }
-    post {
-        always {
-            // Clean up or send notifications after the tests
-            cleanWs()
+
+        // Post Actions: Clean up workspace, notifications, etc.
+        stage('Post Actions') {
+            steps {
+                cleanWs() // Clean workspace after execution
+            }
         }
     }
 }
