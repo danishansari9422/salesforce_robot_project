@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/danishansari9422/salesforce_robot_project.git' // Replace with your GitHub repo URL
+                git branch: 'main' , url:'https://github.com/danishansari9422/salesforce_robot_project.git' // Replace with your GitHub repo URL
             }
         }
         stage('Set Up Python Environment') {
