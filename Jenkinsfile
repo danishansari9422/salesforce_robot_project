@@ -6,13 +6,14 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 checkout scm
+                sleep time: 30, unit: 'SECONDS'  // Sleep for 30 seconds
             }
         }
-    sleep 30
+
         // Run Robot Framework Tests
         stage('Run Robot Framework Tests') {
             steps {
-                sleep 15
+                sleep time: 15, unit: 'SECONDS'  // Sleep for 15 seconds
                 // Execute Robot Framework test
                 bat 'python -m robot Tests/remote_login.robot'
             }
@@ -26,11 +27,12 @@ pipeline {
             }
         }
 
-        // // Post Actions: Clean up workspace after execution
+        // Optional Post Actions: Clean up workspace after execution
+        // Uncomment if needed
         // stage('Post Actions') {
         //     steps {
         //         cleanWs() // Clean workspace after execution
         //     }
-        //}
+        // }
     }
 }
