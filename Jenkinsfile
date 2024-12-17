@@ -8,10 +8,11 @@ pipeline {
                 checkout scm
             }
         }
-
+    sleep 30
         // Run Robot Framework Tests
         stage('Run Robot Framework Tests') {
             steps {
+                sleep 15
                 // Execute Robot Framework test
                 bat 'python -m robot Tests/remote_login.robot'
             }
