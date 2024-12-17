@@ -17,6 +17,14 @@ pipeline {
             }
         }
 
+        stage('Archive Test Results') {
+            steps {
+                archiveArtifacts artifacts: '**/log.html', allowEmptyArchive: true
+                archiveArtifacts artifacts: '**/report.html', allowEmptyArchive: true
+                archiveArtifacts artifacts: '**/output.xml', allowEmptyArchive: true
+            }
+        }
+
         // Post Actions: Clean up workspace after execution
         stage('Post Actions') {
             steps {
