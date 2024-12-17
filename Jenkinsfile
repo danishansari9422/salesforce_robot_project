@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        print("Hello World")
+        console.log("Hello World")
         // Checkout stage: Fetch the code from Git repository
         stage('Checkout Code') {
             steps {
