@@ -25,11 +25,11 @@ pipeline {
             }
         }
 
-        // Post Actions: Clean up workspace after execution
-        stage('Post Actions') {
-            steps {
-                cleanWs() // Clean workspace after execution
-            }
+        // // Post Actions: Clean up workspace after execution
+        // stage('Post Actions') {
+        //     steps {
+        //         cleanWs() // Clean workspace after execution
+        //     }
         }
     }
 }
