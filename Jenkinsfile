@@ -2,6 +2,17 @@ pipeline {
     agent any
 
     stages {
+        // Install Robot Framework
+        stage('Install Robot Framework') {
+            steps {
+                // Install Robot Framework and its dependencies
+                bat 'pip install --upgrade pip'
+                bat 'pip install robotframework'
+                bat 'pip install robotframework-remote'
+            }
+        }
+
+    stages {
         // Checkout stage: Fetch the code from Git repository
         stage('Checkout Code') {
             steps {
