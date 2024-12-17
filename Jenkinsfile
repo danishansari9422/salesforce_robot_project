@@ -30,6 +30,6 @@ pipeline {
         //     steps {
         //         cleanWs() // Clean workspace after execution
         //     }
-        }
+        //}
     }
 }
