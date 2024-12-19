@@ -13,7 +13,7 @@ pipeline {
         stage('Run Selenium Test') {
             steps {
                 script {
-                    bat 'python path\\to\\your\\test_script.py' // Use 'sh' instead of 'bat' for Linux
+                    bat 'python Resources/test_script.py' 
                 }
             }
         }
