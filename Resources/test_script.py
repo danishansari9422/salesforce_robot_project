@@ -5,6 +5,9 @@ from selenium.webdriver.chrome.options import Options
 options = Options()
 # Ensure it runs in a non-headless mode for visibility
 # Do not include options.add_argument("--headless") to allow GUI
+options.add_argument("--headless")
+options.add_argument("--disable-gpu")
+options.add_argument("--window-size=1920x1080")
 driver = webdriver.Chrome(options=options)
 
 # Example Test
