@@ -9,6 +9,15 @@ pipeline {
             }
         }
 
+        // Run Selenium Test
+        stage('Run Selenium Test') {
+            steps {
+                script {
+                    bat 'python path\\to\\your\\test_script.py' // Use 'sh' instead of 'bat' for Linux
+                }
+            }
+        }
+
         // Run Robot Framework Tests
         stage('Run Robot Framework Tests') {
             steps {
@@ -17,6 +26,7 @@ pipeline {
             }
         }
 
+        // Archive Test Results
         stage('Archive Test Results') {
             steps {
                 archiveArtifacts artifacts: '**/log.html', allowEmptyArchive: true
@@ -25,8 +35,7 @@ pipeline {
             }
         }
 
-        // Optional Post Actions: Clean up workspace after execution
-        // Uncomment if needed
+        // // Optional Post Actions: Clean up workspace after execution
         // stage('Post Actions') {
         //     steps {
         //         cleanWs() // Clean workspace after execution
